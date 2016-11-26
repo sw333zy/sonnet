@@ -1,36 +1,19 @@
-// var wordCounter = {
-//   sonnet: document.querySelector('.sonnet').innerText
-// };
+(function () {
+  'use strict';
+  var sonnet = document.querySelector('.sonnet').innerText;
+  var words = Object.create(null); // if there were any object prototype methods in the sonnet
 
-var sonnet = document.querySelector('.sonnet').innerText;
-
-var words = {};
-
-function wordCounter(str) {
-return str.split(' ').length;
-}
-console.log(wordCounter(sonnet));
-
-function strSplit(stringToSplit) {
-var arrayString = stringToSplit.split(' ');
-  return arrayString;
-}
-
-strSplit(sonnet).forEach(function countTheWords(each){
-  if (words[each]){
-    words[each]=words[each]+1;
+  function strSplit(stringToSplit) {
+    return stringToSplit.split(/\s+/); //accounts for whitespace characters
   }
-    else {
-      words[each] = 1;
-    }
-
-  return console.log(words);
-});
-
-
-
-function epic(str) {
-return str.replace(/[^qwertyuiopasdfghjklzxcvbnm " "]/gi, '');
-   }
-
-console.log(epic(sonnet));
+  function epic(str) {
+    return str.replace(/[^qwertyuiopasdfghjklzxcvbnm "']/gi, '');
+  }
+  var sonnetWords = strSplit(sonnet); // dont split twice
+  console.log(sonnetWords.length);
+  sonnetWords.forEach(function countTheWords(each) {
+    words[each] = (words[each] || 0) + 1; // undefined is falsy
+    return console.log(words);
+  });
+  console.log(epic(sonnet));
+})();
