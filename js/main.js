@@ -1,12 +1,14 @@
-(function () {
+function countWords() {
   'use strict';
   var sonnet = document.querySelector('.sonnet').innerText;
   var words = Object.create(null);
   var sonnetWords = sonnet.split(/\s+/);
-  console.log(sonnetWords.length);
+  var wordLength = sonnetWords.length;
   for (var i = 0; i < sonnetWords.length; i++) {
     words[sonnetWords[i]] = (words[sonnetWords[i]] || 0) + 1;
-    console.log(words);
   }
-  console.log(sonnet.replace(/[^qwertyuiopasdfghjklzxcvbnm "']/gi, ''));
-})();
+  var replace = sonnet.replace(/[^qwertyuiopasdfghjklzxcvbnm ]/gi, '');
+  return console.log(wordLength, words, replace);
+}
+countWords();
+countWords();
