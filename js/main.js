@@ -1,14 +1,14 @@
-function countWords() {
+function countWords(string) {
   'use strict';
-  var sonnet = document.querySelector('.sonnet').innerText;
   var words = Object.create(null);
-  var sonnetWords = sonnet.split(/\s+/);
-  var wordLength = sonnetWords.length;
+  var sonnetWords = string.split(/\s+/);
   for (var i = 0; i < sonnetWords.length; i++) {
     words[sonnetWords[i]] = (words[sonnetWords[i]] || 0) + 1;
   }
-  var replace = sonnet.replace(/[^qwertyuiopasdfghjklzxcvbnm ]/gi, '');
-  return console.log(wordLength, words, replace);
+  string.replace(/[^qwertyuiopasdfghjklzxcvbnm ]/gi, '');
+  return words;
 }
-countWords();
-countWords();
+countWords("From fairest creatures we desire increase, That thereby beauty's rose might never die,");
+
+var sonnet = document.querySelector('.sonnet').innerText;
+console.log( countWords(sonnet) );
